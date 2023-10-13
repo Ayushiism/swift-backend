@@ -16,4 +16,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private long phone;
+
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Order order;
+
+
+
 }

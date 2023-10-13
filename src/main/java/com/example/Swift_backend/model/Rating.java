@@ -10,10 +10,17 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "SeatType")
+@Table(name = "Rating")
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
+
+    @Column(name = "presentRating")
+    private long presentRating;
+
+    @Column(name = "sampleSpace")
+    private long samplespace;
+
 }

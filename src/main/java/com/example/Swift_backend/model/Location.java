@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "SeatType")
+@Table(name = "Location")
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +19,9 @@ public class Location {
 
     @Column(name = "name")
     private String name;
+
+    //foreign key
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name = "t_id", referencedColumnName = "id")
+    private Theatre theatre;
 }

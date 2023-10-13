@@ -17,4 +17,12 @@ public class SeatType {
     @Column(name = "id")
     private long id;
 
+    @Column(name = "originalPrice")
+    private long originalPrice;
+
+    @Column(name = "lowerPrice")
+    private long lowerPrice;
+
+    @Column(name = "higherPrice")
+    private long higherPrice;
 }
