@@ -19,14 +19,12 @@ public class Location {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "location_name")
+    private String location_name;
 
     //foreign key
     @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name = "t_id", referencedColumnName = "id")
-    private List<Theatre> theatre;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
-//    private List<Theatre> tickets;
+    @JoinColumn(name = "theater_id", referencedColumnName = "id")
+    private List<Theatre> theatre;
 }

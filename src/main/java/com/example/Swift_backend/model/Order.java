@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Order")
+@Table(name = "Orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +23,8 @@ public class Order {
     @Column(name = "seat")
     private List<String> seat;
 
-    @Column(name = "price")
-    private  long price;
+    @Column(name = "movie_price")
+    private  long movie_price;
 
     @Column(name = "paymentMethod")
     private String paymentMethod;

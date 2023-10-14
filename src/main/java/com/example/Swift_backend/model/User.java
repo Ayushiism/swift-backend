@@ -10,21 +10,22 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "SeatType")
+@Table(name = "User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private long user_id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "userName")
+    private String userName;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "userEmail")
+    private String userEmail;
 
-    @Column(name = "phone")
-    private long phone;
+    @Column(name = "userPhone")
+    private long userPhone;
+
 
     @OneToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "order_id", referencedColumnName = "id")

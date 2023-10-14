@@ -16,30 +16,28 @@ import java.util.Timer;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "show")
+@Table(name = "Shows")
 public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
-    @Column(name = "time")
-    private Time time;
+    @Column(name = "showTime")
+    private Time showTime;
 
-    @Column(name = "booked_seats")
-    private List<String> booked_seats;
 
-    @Column(name = "seats_on_hold")
-    private List<String> seats_on_hold;
-
-    private Set<Theatre> theatre = new HashSet<>();
+    @ManyToMany(mappedBy = "show")
+    private Set<Theatre> theatre;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_id")
+    @JoinColumn(name = "movie_id" , referencedColumnName = "id")
     private Movie movie;
 
-//    @OneToMany(mappedBy="cart")
+//
+//    @OneToMany(mappedBy="show")
+
 //    private Set<User> users;
 
 }
