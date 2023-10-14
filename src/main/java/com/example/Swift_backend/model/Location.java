@@ -3,6 +3,8 @@ package com.example.Swift_backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @ToString
 @Data
 @Getter
@@ -23,5 +25,8 @@ public class Location {
     //foreign key
     @OneToMany(cascade= CascadeType.ALL)
     @JoinColumn(name = "t_id", referencedColumnName = "id")
-    private Theatre theatre;
+    private List<Theatre> theatre;
+
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+//    private List<Theatre> tickets;
 }

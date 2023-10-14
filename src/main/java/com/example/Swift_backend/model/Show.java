@@ -34,11 +34,12 @@ public class Show {
 
     private Set<Theatre> theatre = new HashSet<>();
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
-    @OneToMany(mappedBy="cart")
-    private Set<User> users;
+//    @OneToMany(mappedBy="cart")
+//    private Set<User> users;
 
 }
