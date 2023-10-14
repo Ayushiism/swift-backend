@@ -20,8 +20,8 @@ public class Movie {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "movie_name")
+    private String movie_name;
 
     @Column(name = "genre")
     private String genre;
@@ -32,17 +32,17 @@ public class Movie {
     @Column(name = "discription")
     private String discription;
 
-    @Column(name = "starCast")
-    private String starCast;
+    @Column(name = "star_cast")
+    private String star_cast;
 
     @Column(name = "poster")
     private String poster;
 
-    @Column(name = "releaseDate")
-    private String releaseDate;
+    @Column(name = "release_date")
+    private String release_date;
 
-    @Column(name = "closingDate")
-    private String closingDate;
+    @Column(name = "closing_date")
+    private String closing_date;
 
     @Column(name = "isBlockbuster")
     private String isBlockbuster;
@@ -52,10 +52,10 @@ public class Movie {
 
     //foreign key
     @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "r_id", referencedColumnName = "id")
+    @JoinColumn(name = "rating_id", referencedColumnName = "id")
     private Rating rating;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "movie")
-    private Set<Show> show = new HashSet<>();
+    private Set<Show> show;
 
 }

@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Rating")
+@Table(name = "rating")
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +22,8 @@ public class Rating {
 
     @Column(name = "sampleSpace")
     private long samplespace;
+
+    @OneToOne(mappedBy = "rating")
+    private Movie movie;
 
 }

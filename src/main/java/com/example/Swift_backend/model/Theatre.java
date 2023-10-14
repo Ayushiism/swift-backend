@@ -13,28 +13,28 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "SeatType")
+@Table(name = "theatre")
 public class Theatre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "theaterName")
+    private String theaterName;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "theaterAddress")
+    private String theaterAddress;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
-            name = "users_roles",
+            name = "theater",
             joinColumns = @JoinColumn(
-                    name = "t_id", referencedColumnName = "id"
+                    name = "theatre_id" , referencedColumnName = "id"
             ),
             inverseJoinColumns = @JoinColumn(
                     name = "show_id", referencedColumnName = "id"
             )
     )
-    private Set<Show> show = new HashSet<>();
+    private Set<Show> show;
 }

@@ -3,6 +3,8 @@ package com.example.Swift_backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @ToString
 @Data
 @Getter
@@ -17,11 +19,11 @@ public class Location {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "location_name")
+    private String location_name;
 
     //foreign key
     @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name = "t_id", referencedColumnName = "id")
-    private Theatre theatre;
+    @JoinColumn(name = "theater_id", referencedColumnName = "id")
+    private List<Theatre> theatre;
 }
