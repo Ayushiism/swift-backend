@@ -1,5 +1,6 @@
 package com.example.Swift_backend.model;
 
+import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +17,7 @@ import java.util.Timer;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Shows")
+@Table(name = "`show`")
 public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

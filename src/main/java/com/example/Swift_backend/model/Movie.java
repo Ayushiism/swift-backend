@@ -1,10 +1,12 @@
 package com.example.Swift_backend.model;
 
+import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
 
 @ToString
 @Data
@@ -57,5 +59,4 @@ public class Movie {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "movie")
     private Set<Show> show;
-
 }
