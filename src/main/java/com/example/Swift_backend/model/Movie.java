@@ -29,8 +29,8 @@ public class Movie {
     @Column(name = "director")
     private String director;
 
-    @Column(name = "discription")
-    private String discription;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "star_cast")
     private String star_cast;
