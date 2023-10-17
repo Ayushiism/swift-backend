@@ -1,6 +1,7 @@
 package com.example.Swift_backend.controller;
 
 import com.example.Swift_backend.Dto.SeatOnHoldResponse;
+import com.example.Swift_backend.model.ActualShow;
 import com.example.Swift_backend.model.SeatOnHolds;
 import com.example.Swift_backend.service.SeatOnHoldServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class SeatOnHoldController {
     private SeatOnHoldServiceImplementation seatOnHoldServiceImplementation;
 
     @PostMapping("/holdSeat")
-    public SeatOnHoldResponse holdSeatForBooking(@RequestBody SeatOnHolds seatOnHolds){
-        return seatOnHoldServiceImplementation.holdSeat(seatOnHolds);
+    public SeatOnHoldResponse holdSeatForBooking(@RequestBody ActualShow actualShow){
+        return seatOnHoldServiceImplementation.holdSeat(actualShow);
     }
 
 

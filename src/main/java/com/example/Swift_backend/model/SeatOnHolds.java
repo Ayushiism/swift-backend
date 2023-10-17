@@ -3,6 +3,8 @@ package com.example.Swift_backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @ToString
 @Data
 @Getter
@@ -27,6 +29,10 @@ public class SeatOnHolds {
     @Column(name = "show_id")
     private long show_id;
 
+    @Column(name= "date")
+    private Date date;
+
     @Column(name = "seat_id")
     private long seat_id;
+
 }

@@ -3,7 +3,9 @@ package com.example.Swift_backend.service;
 import com.example.Swift_backend.Dto.SeatOnHoldResponse;
 import com.example.Swift_backend.SeatOnHoldTaskRunner;
 import com.example.Swift_backend.exception.ResourceNotFoundException;
+import com.example.Swift_backend.model.ActualShow;
 import com.example.Swift_backend.model.SeatOnHolds;
+import com.example.Swift_backend.repository.ActualShowRepository;
 import com.example.Swift_backend.repository.SeatOnHoldRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,18 +16,18 @@ import java.util.List;
 public class SeatOnHoldServiceImplementation implements SeatOnHoldService{
 
     @Autowired
-    private SeatOnHoldRepository seatOnHoldRepository;
+    private ActualShowRepository actualShowRepository;
 
 
     @Override
-    public SeatOnHoldResponse holdSeat(SeatOnHolds seatOnHolds) {
+    public SeatOnHoldResponse holdSeat(ActualShow actualShow) {
 
 
         SeatOnHoldResponse seatOnHoldResponse = new SeatOnHoldResponse();
-        List<SeatOnHolds> listOfSeatsOnHold = seatOnHoldRepository.listOfHoldSeats(seatOnHolds.getSeat_id());
+        List<ActualShow> listOfActualShow = actualShowRepository.listOfActualShow(actualShow.getShow_id() , actualShow.getDate());
         boolean flag = false;
         for (SeatOnHolds seatOnHoldCurrent:listOfSeatsOnHold){
-            if(seatOnHoldCurrent.getMovie_id()==seatOnHolds.getMovie_id() &&
+            if(seatOnHoldCurrent.getMovie_id()==actualShow.getMovie_id() &&
                     seatOnHoldCurrent.getTheater_id()==seatOnHolds.getTheater_id() &&
                     seatOnHoldCurrent.getShow_id()== seatOnHolds.getShow_id()){
                 flag = true;
@@ -36,7 +38,7 @@ public class SeatOnHoldServiceImplementation implements SeatOnHoldService{
          * if seat is not in hold
          */
         if(!flag){
-            seatOnHoldRepository.save(seatOnHolds);
+            actualShowRepository.save(seatOnHolds);
             SeatOnHoldTaskRunner seatOnHoldTaskRunner = new SeatOnHoldTaskRunner(seatOnHoldRepository , seatOnHolds);
             seatOnHoldTaskRunner.run();
             seatOnHoldResponse.seatBooked = true;

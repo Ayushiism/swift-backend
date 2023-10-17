@@ -45,7 +45,7 @@ public class Movie {
     private String closing_date;
 
     @Column(name = "isBlockbuster")
-    private String isBlockbuster;
+    private Boolean isBlockbuster;
 
     @Column(name = "prerelease")
     private String prerelease;
