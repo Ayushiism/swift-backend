@@ -18,10 +18,13 @@ public class Rating {
     private long id;
 
     @Column(name = "presentRating")
-    private long presentRating;
+    private Float presentRating;
 
     @Column(name = "sampleSpace")
     private long samplespace;
+
+    @Column(name = "consolidatedRating")
+    private Float consolidatedRating;
 
     @OneToOne(mappedBy = "rating")
     private Movie movie;
