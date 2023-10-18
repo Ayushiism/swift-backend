@@ -1,6 +1,7 @@
 package com.example.Swift_backend.service;
 
 import com.example.Swift_backend.exception.ResourceNotFoundException;
+import com.example.Swift_backend.model.Movie;
 import com.example.Swift_backend.model.Show;
 import com.example.Swift_backend.model.Theatre;
 import com.example.Swift_backend.repository.ShowRepository;
@@ -40,4 +41,9 @@ public class ShowServiceImplementation implements ShowService{
             throw new ResourceNotFoundException("location does not exist");
         }
     }
+
+    public Show saveShow(Show show) {
+        return showRepository.save(show);
+    }
+
 }
