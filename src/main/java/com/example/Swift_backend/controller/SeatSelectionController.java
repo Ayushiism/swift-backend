@@ -23,7 +23,7 @@ public class SeatSelectionController {
     @Autowired
     private RatingImplementation ratingImplementation;
 
-    @PostMapping
+    @PostMapping("/seat-selection-data")
     public Map<String, Object> dataForSeatSelection(@RequestBody Map<String, String> request) {
 
         Map<String, Object> response = new HashMap<String, Object>();
@@ -35,9 +35,9 @@ public class SeatSelectionController {
         Date today = new Date();
         Date releaseDate = actualShow.getShow().getMovie().getRelease_date();
 
-        boolean isCheap =  (today.getHours()==8);
+        boolean isCheap = (today.getHours()==8);
 
-        for(SeatType st: seatType){
+        for(SeatType st : seatType){
             prices.put(st.getName(), isCheap ? st.getLowerPrice() : st.getOriginalPrice());
         }
 
