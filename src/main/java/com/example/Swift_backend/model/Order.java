@@ -32,6 +32,9 @@ public class Order {
     @Column(name = "timeStamp")
     private DateTime timeStamp;
 
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "User_id", referencedColumnName = "id")
+    private User user;
 
 
 }

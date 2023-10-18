@@ -1,16 +1,19 @@
 package com.example.Swift_backend;
 
 import com.example.Swift_backend.exception.ResourceNotFoundException;
-import com.example.Swift_backend.model.SeatOnHolds;
-import com.example.Swift_backend.repository.SeatOnHoldRepository;
+import com.example.Swift_backend.model.ActualShow;
+import com.example.Swift_backend.repository.ActualShowRepository;
+
+import java.util.ArrayList;
+import java.util.Optional;
 
 public class SeatOnHoldTaskRunner implements Runnable{
-    private SeatOnHoldRepository seatOnHoldRepository;
-    private SeatOnHolds seatOnHolds;
+    private ActualShowRepository actualShowRepository;
+    private ActualShow actualShow;
 
-    public SeatOnHoldTaskRunner(SeatOnHoldRepository seatOnHoldRepository , SeatOnHolds seatOnHolds){
-        this.seatOnHoldRepository = seatOnHoldRepository;
-        this.seatOnHolds = seatOnHolds;
+    public SeatOnHoldTaskRunner(ActualShowRepository actualShowRepository , Optional<ActualShow> seatOnHolds){
+        this.actualShowRepository = actualShowRepository;
+        this.actualShow = actualShow;
     }
 
     @Override
@@ -23,8 +26,9 @@ public class SeatOnHoldTaskRunner implements Runnable{
 
         }
 
-        SeatOnHolds currentSeatOnHold = seatOnHoldRepository.findById(seatOnHolds.getUser_id()).orElseThrow(() ->
-                new ResourceNotFoundException("Seat does not exit "+seatOnHolds.getSeat_id()));
-        seatOnHoldRepository.delete(currentSeatOnHold);
+        ActualShow currentSeatOnHold = actualShowRepository.findById(actualShow.getId()).orElseThrow(() ->
+                new ResourceNotFoundException("Seat does not exit "+actualShow.getId()));
+        currentSeatOnHold.setHeld_seats(new ArrayList<>());
+        actualShowRepository.save(currentSeatOnHold);
     }
 }

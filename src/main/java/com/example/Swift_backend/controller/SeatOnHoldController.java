@@ -2,24 +2,23 @@ package com.example.Swift_backend.controller;
 
 import com.example.Swift_backend.Dto.SeatOnHoldResponse;
 import com.example.Swift_backend.model.ActualShow;
-import com.example.Swift_backend.model.SeatOnHolds;
-import com.example.Swift_backend.service.SeatOnHoldServiceImplementation;
+import com.example.Swift_backend.service.ActualShowImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin("*")
 @RestController
 @RequestMapping("api/seatOnHold")
 public class SeatOnHoldController {
 
     @Autowired
-    private SeatOnHoldServiceImplementation seatOnHoldServiceImplementation;
+    private ActualShowImplementation actualShowImplementation;
 
     @PostMapping("/holdSeat")
-    public SeatOnHoldResponse holdSeatForBooking(@RequestBody ActualShow actualShow){
-        return seatOnHoldServiceImplementation.holdSeat(actualShow);
+    public SeatOnHoldResponse holdSeatForBooking(@RequestBody long id, List<String> seatsToHold){
+        return actualShowImplementation.holdSeat(id,seatsToHold);
     }
 
 

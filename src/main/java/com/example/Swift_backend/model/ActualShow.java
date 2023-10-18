@@ -1,10 +1,8 @@
 package com.example.Swift_backend.model;
-
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.Date;
 import java.util.List;
 
@@ -22,8 +20,6 @@ public class ActualShow {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "show_id")
-    private long show_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "show_id" , referencedColumnName = "id")
