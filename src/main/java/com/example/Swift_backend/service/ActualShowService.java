@@ -9,7 +9,6 @@ import com.example.Swift_backend.Dto.SeatOnHoldResponse;
 
 
 public interface ActualShowService {
-
     ActualShow checkAndCreateActualShow(long show_id, Date show_date);
 
     SeatOnHoldResponse holdSeat(long id, List<String> seatsToBook);
