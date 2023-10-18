@@ -1,14 +1,19 @@
 package com.example.Swift_backend.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
 
+@ToString
+@Data
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "actualshow")
 public class ActualShow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

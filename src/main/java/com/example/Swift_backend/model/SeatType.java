@@ -17,6 +17,9 @@ public class SeatType {
     @Column(name = "id")
     private long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "originalPrice")
     private long originalPrice;
 

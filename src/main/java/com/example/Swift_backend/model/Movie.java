@@ -3,6 +3,7 @@ package com.example.Swift_backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -39,16 +40,16 @@ public class Movie {
     private String poster;
 
     @Column(name = "release_date")
-    private String release_date;
+    private Date release_date;
 
     @Column(name = "closing_date")
-    private String closing_date;
+    private Date closing_date;
 
     @Column(name = "isBlockbuster")
     private Boolean isBlockbuster;
 
     @Column(name = "prerelease")
-    private String prerelease;
+    private Boolean prerelease;
 
     //foreign key
     @OneToOne(cascade= CascadeType.ALL)

@@ -7,6 +7,5 @@ import java.util.Date;
 
 
 public interface ActualShowService {
-
     ActualShow checkAndCreateActualShow(long show_id, Date show_date);
 }
