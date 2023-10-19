@@ -1,5 +1,6 @@
 package com.example.Swift_backend.model;
 
+import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,7 +17,7 @@ import java.util.Timer;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Shows")
+@Table(name = "`show`")
 public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +31,14 @@ public class Show {
     @ManyToMany(mappedBy = "show")
     private Set<Theatre> theatre;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id" , referencedColumnName = "id")
     private Movie movie;
+
 //
 //    @OneToMany(mappedBy="show")
+
 //    private Set<User> users;
 
 }
