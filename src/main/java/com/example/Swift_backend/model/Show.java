@@ -28,11 +28,16 @@ public class Show {
     private Time showTime;
 
 
-    @ManyToMany(mappedBy = "show")
-    private Set<Theatre> theatre;
+//    @ManyToMany(mappedBy = "show")
+//    private Set<Theatre> theatre;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "theatre_id" , referencedColumnName = "id")
+    private Theatre theatre;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "movie_id" , referencedColumnName = "id")
     private Movie movie;
 

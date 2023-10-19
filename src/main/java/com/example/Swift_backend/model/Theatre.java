@@ -28,16 +28,9 @@ public class Theatre {
     @Column(name = "theaterAddress")
     private String theaterAddress;
 
-    @ManyToMany
-    @JoinTable(
-            name = "theatre-show",
-            joinColumns = @JoinColumn(
-                    name = "theatre_id" , referencedColumnName = "id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "show_id", referencedColumnName = "id"
-            )
-    )
+
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "theatre")
     private Set<Show> show;
 
 }

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.Map;
 
 @RestController
@@ -22,32 +22,6 @@ public class ShowController {
 
     @Autowired
     private ShowServiceImplementation showServiceImplementation;
-
-//    @GetMapping("/shows/{id}")
-//    public Map<String, Object> getShowsByTheatreId(@PathVariable long id) {
-//        Theatre theatre = theatreServiceImplementation.getTheatreById(id);
-//        Map<String, Object> response = new HashMap<String, Object>();
-//        if (theatre == null) {
-//            // Handle the case where the location with the given ID doesn't exist
-//            // You can return an error message or appropriate HTTP status code (e.g., 404 Not Found)
-//            //return null;
-//            response.put("error", true);
-//            response.put("msg", "username already exists");
-//            return response;
-//        } else {
-//            List<Show> shows = showServiceImplementation.getShowsByTheatre(theatre);
-//            // Create a map to hold the response data
-//            response.put("error", false);
-//            response.put("msg", "username already exists");
-//            response = Map.of(
-//                    "theatre", theatre,
-//                    "theatreId", id,
-//                    "shows", shows
-//            );
-//            // Return the response
-//            return response;
-//        }
-
 
     @GetMapping("/show/{id}")
     public Map<String, Object> getShowsByTheatre(@PathVariable long id) {

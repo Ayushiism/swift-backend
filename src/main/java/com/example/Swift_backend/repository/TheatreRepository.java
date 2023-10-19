@@ -11,3 +11,4 @@ public interface TheatreRepository extends JpaRepository<Theatre, Long> {
     @Query("SELECT t.show  FROM Theatre t WHERE t.id=?1")
     List<Show> findShowsByTheatreId(long id);
 }
+

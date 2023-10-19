@@ -22,15 +22,6 @@ public class ShowServiceImplementation implements ShowService{
     @Autowired
     private TheatreRepository theatreRepository;
 
-//    @Override
-//    public List<Show> getShowsByTheatre(Theatre theatre) {
-//
-//        if (theatre != null) {
-//            return showRepository.findShowsByTheatre(theatre);
-//        }
-//        return null; // Handle the case where the theatre with the given ID doesn't exist
-//    }
-//
     public List<Show> getShowsByTheaterId(long id) {
 
         try {
@@ -40,4 +31,6 @@ public class ShowServiceImplementation implements ShowService{
             throw new ResourceNotFoundException("location does not exist");
         }
     }
+
+
 }

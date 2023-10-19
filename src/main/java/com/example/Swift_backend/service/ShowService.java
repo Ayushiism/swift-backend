@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface ShowService {
 
-//    Theatre getShowById(long id);
 
     List<Show> getShowsByTheaterId(long id);
 }
