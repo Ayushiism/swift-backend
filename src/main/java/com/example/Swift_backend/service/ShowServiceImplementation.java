@@ -1,6 +1,7 @@
 package com.example.Swift_backend.service;
 
 import com.example.Swift_backend.exception.ResourceNotFoundException;
+import com.example.Swift_backend.model.Movie;
 import com.example.Swift_backend.model.Show;
 import com.example.Swift_backend.model.Theatre;
 import com.example.Swift_backend.repository.ShowRepository;
@@ -22,6 +23,15 @@ public class ShowServiceImplementation implements ShowService{
     @Autowired
     private TheatreRepository theatreRepository;
 
+//    @Override
+//    public List<Show> getShowsByTheatre(Theatre theatre) {
+//
+//        if (theatre != null) {
+//            return showRepository.findShowsByTheatre(theatre);
+//        }
+//        return null; // Handle the case where the theatre with the given ID doesn't exist
+//    }
+//
     public List<Show> getShowsByTheaterId(long id) {
 
         try {
@@ -32,5 +42,8 @@ public class ShowServiceImplementation implements ShowService{
         }
     }
 
+    public Show saveShow(Show show) {
+        return showRepository.save(show);
+    }
 
 }

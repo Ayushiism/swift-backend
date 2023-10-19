@@ -4,6 +4,7 @@ import com.couchbase.client.core.deps.com.fasterxml.jackson.annotation.JsonIgnor
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
@@ -31,8 +32,8 @@ public class Movie {
     @Column(name = "director")
     private String director;
 
-    @Column(name = "discription")
-    private String discription;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "star_cast")
     private String star_cast;
@@ -41,16 +42,16 @@ public class Movie {
     private String poster;
 
     @Column(name = "release_date")
-    private String release_date;
+    private Date release_date;
 
     @Column(name = "closing_date")
-    private String closing_date;
+    private Date closing_date;
 
     @Column(name = "isBlockbuster")
-    private String isBlockbuster;
+    private Boolean isBlockbuster;
 
     @Column(name = "prerelease")
-    private String prerelease;
+    private Boolean prerelease;
 
     //foreign key
     @OneToOne(cascade= CascadeType.ALL)

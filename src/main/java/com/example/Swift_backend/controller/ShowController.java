@@ -1,11 +1,14 @@
 package com.example.Swift_backend.controller;
 
 import com.example.Swift_backend.model.Location;
+import com.example.Swift_backend.model.Movie;
 import com.example.Swift_backend.model.Show;
 import com.example.Swift_backend.model.Theatre;
 import com.example.Swift_backend.service.ShowServiceImplementation;
 import com.example.Swift_backend.service.TheatreServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -36,6 +39,12 @@ public class ShowController {
             response.put("msg", "theatre id is wrong");
             return response;
         }
+    }
+
+    @PostMapping("/addShow")
+    public ResponseEntity<Show> addShow(@RequestBody Show show) {
+        Show savedShow = showServiceImplementation.saveShow(show);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedShow);
     }
 
 

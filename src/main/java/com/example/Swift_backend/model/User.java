@@ -10,26 +10,26 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long user_id;
 
-    @Column(name = "userName")
-    private String userName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "userEmail")
-    private String userEmail;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "userPhone")
-    private long userPhone;
+    @Column(name = "phone")
+    private String phone;
 
 
-    @OneToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "order_id", referencedColumnName = "id")
-    private Order order;
+//    @OneToOne(cascade= CascadeType.ALL)
+//    @JoinColumn(name = "order_id", referencedColumnName = "id")
+//    private Order order;
 
 
 

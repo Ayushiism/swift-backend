@@ -14,6 +14,10 @@ public class LocationServiceImplementation implements LocationService{
     @Autowired
     private LocationRepository locationRepository;
 
+    public LocationServiceImplementation(LocationRepository locationRepository) {
+        this.locationRepository = locationRepository;
+    }
+
     @Override
     public List<Location> getAllLocations() {
         return locationRepository.findAll();
@@ -23,6 +27,13 @@ public class LocationServiceImplementation implements LocationService{
     public Location getLocationById(long id) {
         Optional<Location> optionalLocation = locationRepository.findById(id);
         return optionalLocation.orElse(null);
+    }
+
+
+
+    @Override
+    public Location saveLocation(Location location) {
+        return locationRepository.save(location);
     }
 
 }

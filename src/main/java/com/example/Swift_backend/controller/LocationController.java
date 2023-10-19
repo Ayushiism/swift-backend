@@ -1,10 +1,9 @@
 package com.example.Swift_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.Swift_backend.model.Location;
 import com.example.Swift_backend.service.LocationServiceImplementation;
@@ -27,6 +26,12 @@ public class LocationController {
 
         response.put("userDetail", locationServiceImplementation.getAllLocations());
         return response;
+    }
+
+    @PostMapping("/addLocation")
+    public ResponseEntity<Location> addLocation(@RequestBody Location location) {
+        Location savedLocation = locationServiceImplementation.saveLocation(location);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedLocation);
     }
 
 
