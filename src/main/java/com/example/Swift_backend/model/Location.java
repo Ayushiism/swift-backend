@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @ToString
 @Data
@@ -24,6 +25,7 @@ public class Location {
 
     //foreign key
     @OneToMany(cascade= CascadeType.ALL)
+
     @JoinColumn(name = "theater_id", referencedColumnName = "id")
-    private List<Theatre> theatre;
+    private Set<Theatre> theatre;
 }

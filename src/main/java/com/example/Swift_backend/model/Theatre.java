@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
 
 @ToString
 @Data
@@ -14,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "theatre")
+
 public class Theatre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +30,7 @@ public class Theatre {
 
     @ManyToMany
     @JoinTable(
-            name = "theater",
+            name = "theatre-show",
             joinColumns = @JoinColumn(
                     name = "theatre_id" , referencedColumnName = "id"
             ),
@@ -37,4 +39,5 @@ public class Theatre {
             )
     )
     private Set<Show> show;
+
 }
