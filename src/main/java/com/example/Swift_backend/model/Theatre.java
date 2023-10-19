@@ -28,7 +28,7 @@ public class Theatre {
 
     @ManyToMany
     @JoinTable(
-            name = "theater",
+            name = "theatre-show",
             joinColumns = @JoinColumn(
                     name = "theatre_id" , referencedColumnName = "id"
             ),

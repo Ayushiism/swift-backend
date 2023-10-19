@@ -23,6 +23,9 @@ public class ActualShowImplementation implements ActualShowService{
     @Autowired
     private ShowRepository showRepository;
 
+    @Autowired
+    private SeatOnHoldTaskRunner seatOnHoldTaskRunner;
+
     @Override
     public ActualShow checkAndCreateActualShow(long show_id, Date show_date){
 
@@ -64,8 +67,10 @@ public class ActualShowImplementation implements ActualShowService{
         if(!flag){
             actualShow.get().setHeld_seats(seatsToBook);
             actualShowRepository.save(actualShow.get());
-            SeatOnHoldTaskRunner seatOnHoldTaskRunner = new SeatOnHoldTaskRunner(actualShowRepository , actualShow);
             seatOnHoldTaskRunner.run();
+            ActualShow currentSeatOnHold = actualShowRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Seat does not exit "+id));
+            currentSeatOnHold.setHeld_seats(new ArrayList<>());
+            actualShowRepository.save(currentSeatOnHold);
             seatOnHoldResponse.seatBooked = true;
             return seatOnHoldResponse;
         }else{
@@ -89,8 +94,8 @@ public class ActualShowImplementation implements ActualShowService{
         currentSeatOnHold.setBooked_seats(bookedList);
         currentSeatOnHold.setHeld_seats(new ArrayList<>());
         actualShowRepository.save(currentSeatOnHold);
+        seatOnHoldTaskRunner.terminateThread();
         return true;
-
     }
 
 

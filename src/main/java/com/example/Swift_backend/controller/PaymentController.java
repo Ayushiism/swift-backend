@@ -1,6 +1,6 @@
 package com.example.Swift_backend.controller;
 
-import com.example.Swift_backend.Dto.BookedTicketResponse;
+import com.example.Swift_backend.dto.BookedTicketResponse;
 import com.example.Swift_backend.exception.ResourceNotFoundException;
 import com.example.Swift_backend.model.ActualShow;
 import com.example.Swift_backend.repository.ActualShowRepository;
@@ -17,7 +17,8 @@ public class PaymentController {
 
     @Autowired
     private ActualShowImplementation actualShowImplementation;
-    @PostMapping("/paymentSuccess/")
+
+    @PostMapping("/paymentSuccess")
     public BookedTicketResponse paymentSuccess(@RequestBody BookedTicketResponse bookedTicketResponse){
 
 
