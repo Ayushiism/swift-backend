@@ -15,4 +15,5 @@ public interface TheatreService {
 
     List<Theatre> getTheatresByLocationId(long id);
 
+    Theatre saveTheatre(Theatre theatre);
 }

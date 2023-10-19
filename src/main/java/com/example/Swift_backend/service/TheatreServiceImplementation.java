@@ -45,4 +45,14 @@ public class TheatreServiceImplementation implements TheatreService{
             throw new ResourceNotFoundException("location does not exist");
         }
     }
+
+
+
+    @Override
+    public Theatre saveTheatre(Theatre theatre) {
+        // Implement logic to save theatre if needed
+        return theatreRepository.save(theatre);
+    }
 }
+
+
