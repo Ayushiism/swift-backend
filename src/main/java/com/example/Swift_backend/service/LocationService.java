@@ -9,6 +9,8 @@ public interface LocationService {
     Location saveLocation(Location location);
 
     Location getLocationById(long id);
+
+
 }
 
 
