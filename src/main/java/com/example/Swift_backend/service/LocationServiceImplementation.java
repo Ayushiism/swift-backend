@@ -1,6 +1,8 @@
 package com.example.Swift_backend.service;
 
+import com.example.Swift_backend.exception.ResourceNotFoundException;
 import com.example.Swift_backend.model.Location;
+import com.example.Swift_backend.model.Theatre;
 import com.example.Swift_backend.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,14 @@ public class LocationServiceImplementation implements LocationService{
         return optionalLocation.orElse(null);
     }
 
+    @Override
+    public Location addTheatre(long id, Theatre theatre) {
+        Location loc = locationRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Location not Exit with id "+id));
+
+        loc.getTheatre().add(theatre);
+        return locationRepository.save(loc);
+    }
 
 
     @Override

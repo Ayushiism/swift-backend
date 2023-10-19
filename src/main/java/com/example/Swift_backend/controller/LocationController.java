@@ -1,5 +1,6 @@
 package com.example.Swift_backend.controller;
 
+import com.example.Swift_backend.model.Theatre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("http://localhost:3000/")
-@RequestMapping("api/customer")
+@CrossOrigin("*")
+@RequestMapping("api/location")
 public class LocationController {
 
     @Autowired
@@ -25,13 +26,19 @@ public class LocationController {
         Map<String, Object> response = new HashMap<String, Object>();
 
         response.put("userDetail", locationServiceImplementation.getAllLocations());
-        return response;
+        return (Map<String, Object>) locationServiceImplementation.getAllLocations();
     }
 
     @PostMapping("/addLocation")
     public ResponseEntity<Location> addLocation(@RequestBody Location location) {
         Location savedLocation = locationServiceImplementation.saveLocation(location);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedLocation);
+    }
+    @PostMapping("/addTheatre/{id}")
+    public ResponseEntity<Location> addTheatre(@PathVariable long id, @RequestBody Theatre theatre){
+        Location addtheatre = locationServiceImplementation.addTheatre(id, theatre);
+        return  ResponseEntity.status(HttpStatus.CREATED).body(addtheatre);
+
     }
 
 
