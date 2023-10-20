@@ -46,5 +46,4 @@ public class ShowController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedShow);
     }
 
-
 }

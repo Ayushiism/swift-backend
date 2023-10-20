@@ -25,8 +25,8 @@ public class LocationController {
 
         Map<String, Object> response = new HashMap<String, Object>();
 
-        response.put("userDetail", locationServiceImplementation.getAllLocations());
-        return (Map<String, Object>) locationServiceImplementation.getAllLocations();
+        response.put("locationDetails", locationServiceImplementation.getAllLocations());
+        return response;
     }
 
     @PostMapping("/addLocation")
