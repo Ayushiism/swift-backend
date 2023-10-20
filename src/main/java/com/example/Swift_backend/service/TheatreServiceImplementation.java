@@ -1,6 +1,7 @@
 package com.example.Swift_backend.service;
 
 import com.example.Swift_backend.exception.ResourceNotFoundException;
+import com.example.Swift_backend.model.Movie;
 import com.example.Swift_backend.model.Theatre;
 import com.example.Swift_backend.repository.LocationRepository;
 import com.example.Swift_backend.repository.ShowRepository;
@@ -27,6 +28,10 @@ public class TheatreServiceImplementation implements TheatreService{
     public Theatre getTheatreById(long id) {
         Optional<Theatre> optionalTheatre = theatreRepository.findById(id);
         return optionalTheatre.orElse(null);
+    }
+
+    public List<Theatre> getAllTheatre() {
+        return theatreRepository.findAll();
     }
 
 

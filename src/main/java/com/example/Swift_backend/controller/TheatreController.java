@@ -39,5 +39,17 @@ public class TheatreController {
         }
     }
 
+    @GetMapping("/theatres")
+    public Map<String, Object> getTheatre() {
+
+        Map<String, Object> response = new HashMap<String, Object>();
+
+        response.put("theatreDetail", theatreServiceImplementation.getAllTheatre()==null?"":theatreServiceImplementation.getAllTheatre());
+        return response;
+    }
+
+
+    
+
 
 }
